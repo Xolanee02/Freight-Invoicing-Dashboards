@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freight Invoice Factoring Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>Freight Invoice Factoring Portal</h1>
+    <p>Submit loads for fast funding and review all submissions in one dashboard.</p>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Intake Form</h2>
+      <form id="intake-form" class="intake-form">
+        <div class="field-grid">
+          <label>
+            Company Name
+            <input name="companyName" required />
+          </label>
+
+          <label>
+            MC Number
+            <input name="mcNumber" required />
+          </label>
+
+          <label>
+            Contact Name
+            <input name="contactName" required />
+          </label>
+
+          <label>
+            Contact Email
+            <input type="email" name="contactEmail" required />
+          </label>
+
+          <label>
+            Invoice Number
+            <input name="invoiceNumber" required />
+          </label>
+
+          <label>
+            Invoice Amount (USD)
+            <input type="number" name="invoiceAmount" min="1" step="0.01" required />
+          </label>
+
+          <label>
+            Debtor Name (Shipper/Broker)
+            <input name="debtorName" required />
+          </label>
+
+          <label>
+            Due Date
+            <input type="date" name="dueDate" required />
+          </label>
+        </div>
+
+        <label>
+          Additional Notes
+          <textarea name="notes" rows="3" placeholder="Load details, lane, payment terms, etc."></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit">Submit for Review</button>
+          <button type="button" id="seed-demo">Load Demo Data</button>
+        </div>
+      </form>
+      <p id="form-status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="dashboard-header">
+        <h2>Admin Dashboard</h2>
+        <button id="clear-data" class="danger">Clear All</button>
+      </div>
+
+      <div class="metrics" id="metrics"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Submitted</th>
+              <th>Company</th>
+              <th>Invoice #</th>
+              <th>Amount</th>
+              <th>Debtor</th>
+              <th>Due</th>
+              <th>Contact</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="submissions-table"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <template id="metric-template">
+    <article class="metric-card">
+      <p class="metric-label"></p>
+      <p class="metric-value"></p>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
